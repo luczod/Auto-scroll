@@ -37,19 +37,19 @@ function filterData(res: TExames[], param: string) {
   }
 }
 
-export async function listarPosto(param: string, posto?: string) {
-  if (posto === undefined || !Number(posto)) {
-    // console.log(posto);
+export async function listarstation(param: string, station?: string) {
+  if (station === undefined || !Number(station)) {
+    // console.log(station);
     const data = {
       res: [],
-      err: "Posto não existe",
+      err: "station não existe",
       horas: new Date().toLocaleString(),
     };
     return data;
   }
 
   const urlDev = "http://localhost:3004";
-  const urlProd = import.meta.env.VITE_URL_PROD + posto;
+  const urlProd = import.meta.env.VITE_URL_PROD + station;
 
   try {
     const req = await fetch(urlProd, {
@@ -79,7 +79,7 @@ export async function listarPosto(param: string, posto?: string) {
 export function Wrapper() {
   const divRef = useRef<HTMLDivElement>(null);
   const [searchParams, _] = useSearchParams({ q: "all" });
-  const { posto } = useParams();
+  const { station } = useParams();
   const q = searchParams.get("q") as string;
 
   // setInterval(() => scrollDiv(divRef), 12 * 1000);
@@ -96,7 +96,7 @@ export function Wrapper() {
     isLoading,
   } = useQuery({
     queryKey: ["exams"],
-    queryFn: async () => listarPosto(q, posto),
+    queryFn: async () => listarstation(q, station),
     refetchInterval: 30 * 1000,
   });
 

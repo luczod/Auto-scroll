@@ -9,7 +9,7 @@ import Page404 from "./components/notFound";
 
 const router = createBrowserRouter([
   {
-    path: "/:posto",
+    path: "/:station",
     element: <App />,
   },
   {

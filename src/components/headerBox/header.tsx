@@ -44,32 +44,32 @@ export function Header({ num, horas, err }: THeader) {
 }
 
 export function HeaderFilter() {
-  const { posto } = useParams();
+  const { station } = useParams();
   return (
     <div className="block-inline p-2 md:*:text-base">
       <Button className="btn-red" size="lg">
-        <a href={`/${posto}?q=red`}>Deve Material</a>
+        <a href={`/${station}?q=red`}>Deve Material</a>
       </Button>
       <Button className="btn-yellow" size="lg">
-        <a href={`/${posto}?q=yellow`}>Recebido Coletado</a>
+        <a href={`/${station}?q=yellow`}>Recebido Coletado</a>
       </Button>
       <Button className="btn-white" size="lg">
-        <a href={`/${posto}?q=white`}>Amostra na seção</a>
+        <a href={`/${station}?q=white`}>Amostra na seção</a>
       </Button>
       <Button className="btn-purple" size="lg">
-        <a href={`/${posto}?q=purple`}>
+        <a href={`/${station}?q=purple`}>
           Exame faltando 45 minutos para liberação
         </a>
       </Button>
 
       <Button className="btn-maroon" size="lg">
-        <a href={`/${posto}?q=maroon`}>
+        <a href={`/${station}?q=maroon`}>
           Passou do Prazo de 2:00 para liberação
         </a>
       </Button>
 
       <Button className="btn-orange" size="lg">
-        <a href={`/${posto}?q=orange`}>
+        <a href={`/${station}?q=orange`}>
           Passou do prazo de 24 horas para liberação
         </a>
       </Button>
