@@ -19,6 +19,20 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
+        blue: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        green:
+          "focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        red: "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        maroon:
+          "focus:outline-none text-white bg-[#881337] hover:bg-[#6e0f2c] focus:ring-4 focus:ring-[#881337]/80 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        yellow:
+          "focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        purple:
+          "focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        orange:
+          "focus:outline-none text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+        white:
+          "focus:outline-none text-black bg-slate-50 border border-slate-500 hover:bg-zinc-50 focus:ring-4 focus:ring-slate-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
       },
       size: {
         default: "h-9 px-4 py-2",
