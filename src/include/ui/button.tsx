@@ -9,9 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-slate-900 text-slate-50 shadow",
-        destructive:
-          "bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+        default: "shadow",
         outline:
           "border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
@@ -19,6 +17,11 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
+      },
+      bgColor: {
+        default: "bg-slate-900 text-slate-50",
+        destructive:
+          "bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
         blue: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
         green:
           "focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
@@ -32,7 +35,7 @@ const buttonVariants = cva(
         orange:
           "focus:outline-none text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
         white:
-          "focus:outline-none text-black bg-slate-50 border border-slate-500 hover:bg-zinc-50 focus:ring-4 focus:ring-slate-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
+          "focus:outline-none text-black bg-slate-50 border border-slate-500 hover:bg-zinc-200 focus:ring-4 focus:ring-slate-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -44,6 +47,7 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: "default",
       size: "default",
+      bgColor: "default",
     },
   }
 );
@@ -55,11 +59,11 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, bgColor, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, bgColor, className }))}
         ref={ref}
         {...props}
       />

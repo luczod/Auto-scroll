@@ -47,28 +47,28 @@ export function HeaderFilter() {
   const { station } = useParams();
   return (
     <div className="block-inline p-2 md:*:text-base">
-      <Button variant="red" size="lg">
+      <Button bgColor="red" size="lg">
         <a href={`/${station}?q=red`}>Deve Material</a>
       </Button>
-      <Button variant="yellow" size="lg">
+      <Button bgColor="yellow" size="lg">
         <a href={`/${station}?q=yellow`}>Recebido Coletado</a>
       </Button>
-      <Button variant="white" size="lg">
+      <Button bgColor="white" size="lg">
         <a href={`/${station}?q=white`}>Amostra na seção</a>
       </Button>
-      <Button variant="purple" size="lg">
+      <Button bgColor="purple" size="lg">
         <a href={`/${station}?q=purple`}>
           Exame faltando 45 minutos para liberação
         </a>
       </Button>
 
-      <Button variant="maroon" size="lg">
+      <Button bgColor="maroon" size="lg">
         <a href={`/${station}?q=maroon`}>
           Passou do Prazo de 2:00 para liberação
         </a>
       </Button>
 
-      <Button variant="orange" size="lg">
+      <Button bgColor="orange" size="lg">
         <a href={`/${station}?q=orange`}>
           Passou do prazo de 24 horas para liberação
         </a>
