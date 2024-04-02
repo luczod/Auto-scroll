@@ -6,10 +6,11 @@ import {
   CardTitle,
 } from "@/include/ui/card";
 import { UpdateBtn } from "./headerBtn";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { RawMsg, toastMsg } from "../flashMsg";
 import { useEffect } from "react";
 import { useToast } from "../../include/ui/use-toast";
+import { Link } from "react-router-dom";
 type THeader = { num?: number; horas?: string; err?: string };
 
 {
@@ -44,34 +45,41 @@ export function Header({ num, horas, err }: THeader) {
 }
 
 export function HeaderFilter() {
-  const { station } = useParams();
+  // const { posto } = useParams();
+  const { search } = useLocation();
   return (
     <div className="block-inline p-2 md:*:text-base">
-      <Button bgColor="red" size="lg">
-        <a href={`/${station}?q=red`}>Deve Material</a>
+      <Button aria-selected={search === "?q=red"} bgColor="red" size="lg">
+        <Link to="?q=red" reloadDocument>
+          Deve Material
+        </Link>
       </Button>
-      <Button bgColor="yellow" size="lg">
-        <a href={`/${station}?q=yellow`}>Recebido Coletado</a>
+      <Button aria-selected={search === "?q=yellow"} bgColor="yellow" size="lg">
+        <Link to="?q=yellow" reloadDocument>
+          Recebido Coletado
+        </Link>
       </Button>
-      <Button bgColor="white" size="lg">
-        <a href={`/${station}?q=white`}>Amostra na seção</a>
+      <Button aria-selected={search === "?q=white"} bgColor="white" size="lg">
+        <Link to="?q=white" reloadDocument>
+          Amostra na seção
+        </Link>
       </Button>
-      <Button bgColor="purple" size="lg">
-        <a href={`/${station}?q=purple`}>
+      <Button aria-selected={search === "?q=purple"} bgColor="purple" size="lg">
+        <Link to="?q=purple" reloadDocument>
           Exame faltando 45 minutos para liberação
-        </a>
+        </Link>
       </Button>
 
-      <Button bgColor="maroon" size="lg">
-        <a href={`/${station}?q=maroon`}>
+      <Button aria-selected={search === "?q=maroon"} bgColor="maroon" size="lg">
+        <Link to="?q=maroon" reloadDocument>
           Passou do Prazo de 2:00 para liberação
-        </a>
+        </Link>
       </Button>
 
-      <Button bgColor="orange" size="lg">
-        <a href={`/${station}?q=orange`}>
+      <Button aria-selected={search === "?q=orange"} bgColor="orange" size="lg">
+        <Link to="?q=orange" reloadDocument>
           Passou do prazo de 24 horas para liberação
-        </a>
+        </Link>
       </Button>
     </div>
   );
