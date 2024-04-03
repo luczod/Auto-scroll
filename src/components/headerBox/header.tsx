@@ -6,18 +6,23 @@ import {
   CardTitle,
 } from "@/include/ui/card";
 import { UpdateBtn } from "./headerBtn";
-import { useLocation, useParams } from "react-router-dom";
-import { RawMsg, toastMsg } from "../flashMsg";
+import { useLocation } from "react-router-dom";
+import { RawMsg } from "../flashMsg";
 import { useEffect } from "react";
 import { useToast } from "../../include/ui/use-toast";
 import { Link } from "react-router-dom";
 type THeader = { num?: number; horas?: string; err?: string };
 
-{
-  /* <Button className="btn-green" size="lg">
-    Aguardando integração!
-  </Button> */
-}
+const DateBrToISO = (valueData: string | undefined) => {
+  const formatedA = !!valueData
+    ? `${valueData.slice(6, 10)}-${valueData.slice(3, 5)}-${valueData.slice(
+        0,
+        2
+      )}`
+    : "";
+
+  return formatedA + " " + valueData?.slice(12);
+};
 
 export function Header({ num, horas, err }: THeader) {
   const { toast } = useToast();
@@ -36,7 +41,9 @@ export function Header({ num, horas, err }: THeader) {
         <UpdateBtn />
         <CardHeader>
           <CardTitle>Registros encontrados {num}</CardTitle>
-          <CardDescription>{horas}</CardDescription>
+          <CardDescription className="text-black">
+            <time dateTime={DateBrToISO(horas)}>{horas}</time>
+          </CardDescription>
         </CardHeader>
       </Card>
       <HeaderFilter />
@@ -45,38 +52,38 @@ export function Header({ num, horas, err }: THeader) {
 }
 
 export function HeaderFilter() {
-  // const { posto } = useParams();
+  // const { station } = useParams();
   const { search } = useLocation();
   return (
     <div className="block-inline p-2 md:*:text-base">
-      <Button aria-selected={search === "?q=red"} bgColor="red" size="lg">
+      <Button aria-pressed={search === "?q=red"} bgColor="red" size="lg">
         <Link to="?q=red" reloadDocument>
           Deve Material
         </Link>
       </Button>
-      <Button aria-selected={search === "?q=yellow"} bgColor="yellow" size="lg">
+      <Button aria-pressed={search === "?q=yellow"} bgColor="yellow" size="lg">
         <Link to="?q=yellow" reloadDocument>
           Recebido Coletado
         </Link>
       </Button>
-      <Button aria-selected={search === "?q=white"} bgColor="white" size="lg">
+      <Button aria-pressed={search === "?q=white"} bgColor="white" size="lg">
         <Link to="?q=white" reloadDocument>
           Amostra na seção
         </Link>
       </Button>
-      <Button aria-selected={search === "?q=purple"} bgColor="purple" size="lg">
+      <Button aria-pressed={search === "?q=purple"} bgColor="purple" size="lg">
         <Link to="?q=purple" reloadDocument>
           Exame faltando 45 minutos para liberação
         </Link>
       </Button>
 
-      <Button aria-selected={search === "?q=maroon"} bgColor="maroon" size="lg">
+      <Button aria-pressed={search === "?q=maroon"} bgColor="maroon" size="lg">
         <Link to="?q=maroon" reloadDocument>
           Passou do Prazo de 2:00 para liberação
         </Link>
       </Button>
 
-      <Button aria-selected={search === "?q=orange"} bgColor="orange" size="lg">
+      <Button aria-pressed={search === "?q=orange"} bgColor="orange" size="lg">
         <Link to="?q=orange" reloadDocument>
           Passou do prazo de 24 horas para liberação
         </Link>
